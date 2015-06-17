@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module SYSTEM "module.dtd" >
+<module>
+  <name>products-module</name>
+  <displayName>${project.name}</displayName>
+  <description>${project.description}</description>
+  <class>fi.sonera.products.ProductsModule</class>
+  <versionHandler>fi.sonera.products.setup.ProductsModuleVersionHandler</versionHandler>
+  <version>${project.version}</version>
+
+
+
+
+
+  <dependencies>
+    <dependency>
+      <name>core</name>
+      <version>5.3.9/*</version>
+    </dependency>
+      <dependency>
+          <name>ui-admincentral</name>
+          <version>5.3.9</version>
+      </dependency>
+  </dependencies>
+  <repositories>
+      <repository>
+          <name>magnolia</name>
+          <workspaces>
+              <workspace>products</workspace>
+          </workspaces>
+          <nodeTypeFile>/mgnl-nodetypes/product-nodetypes.xml</nodeTypeFile>
+      </repository>
+  </repositories>
+
+
+
+
+</module>
