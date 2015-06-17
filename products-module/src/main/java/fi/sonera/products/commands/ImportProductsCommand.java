@@ -12,6 +12,38 @@ public class ImportProductsCommand extends MgnlCommand{
 
     private SystemContext systemContext;
 
+    /**
+     *  Session session = systemContext.getJCRSession("tweets");
+     Node root =  session.getNode("/");
+     Node node = root.addNode(id_str,"mgnl:tweet");
+
+     ImportGenericJson genericJson = new ImportGenericJson() {
+    @Override
+    protected String treatThis(String key, JSONArray object) {
+    if(key.equals("hashtags")){
+    List<String> value=new ArrayList<>();
+    for(int i=0;i<object.length();i++){
+    try {
+    value.add((String)((JSONObject)object.get(i)).get("text"));
+    } catch (JSONException e) {
+    e.printStackTrace();
+    }
+    }
+    return StringUtils.join(value,",");
+    }
+    return String.valueOf(object);
+    }
+    };
+
+     genericJson.importJsonToNode(tweet,node,"mgnl:content");
+
+     session.save();
+     * @param systemContext
+     */
+
+
+
+
     @Inject
     public ImportProductsCommand(SystemContext systemContext){
 
